@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENERATOR-QR</title>
+    <link rel="icon" href="./img/logoQr.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <div class="titulo-header">
+      
+        <img class="logo" src="logoQr.png" alt="logo">
+       
+      
+        <h1 id="titulo">Generador de códigos QR</h1>
+   
+    </div>
+    
+        <div id="enlaces">
+    
+            <li><a href="#como-utilizar">¿Cómo funciona?</a></li>
+
+        </div>
+       
+   
+</header>
+<body>
+    <div class="container">
+        
+        <label for="texto">Texto / URL:</label>
+        <textarea type="text" name="texto" id="texto" class="texto" cols="100" rows="10" placeholder="Ingresa frase o texto..."></textarea>
+        <br>
+        <button id="botonReiniciar">Borrar texto</button>
+        <div class="mensaje">
+            <div id="mensaje" onclick="texto_mensaje()">
+        </div>
+        <br>
+        <button onclick="generarQR();">Generar código QR</button>
+        <div class="qr-container">
+            <div id="codigoQR"></div>
+        </div>
+    </div>
+    <div class="mensaje">
+        <div id="mensaje" onclick="texto_mensaje()">
+    </div>
+
+    <div class="informacion">
+        <h2 id="como-utilizar">¿Cómo puedo utilizar esta app?</h2>
+        <h3>Hay muchas formas de utilizar los GENERATOR QR:</h3>
+        <p>
+            Generar un Qr con un enlace para compartir. <br>
+            Conocer el contenido de un estante o archivero.
+        <br>Funcionalidad de un artefacto o electrodoméntico.
+        <br>Indicar la ubicación de un objeto o lugar.
+        <br>Mostrar el valor o precio de un producto.
+        <br>Dar a conocer todo tipo de información para que este<br>
+        disponible para quien la necesite; clientes, visitas, huespedes.<br> 
+        Ya sea; en una casa, un hotel, una oficina o un local. 
+        </p>
+        <h3>
+            A quien esta dirigida esta herrmienta:
+        </h3>
+       
+            <ul>
+                Locales de todo tipo/ 
+                Oficinas/ 
+                Empresas/ 
+                Hoteles/
+                Casas
+            </ul>
+                
+
+        <h4>
+            Existen infinidad de alternativas en las que puedes usar<br>
+            este tipo de códigos, solo necesitas generarlos con el texto<br>
+            que quieras comunicar, imprimirlo y colocarlo donde las personas<br>
+            puedan escanearlo con su celular y acceder a dicha información.
+        </h4>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <footer> 
+       	&copy Copyright Sergio Pereira 2024
+    </footer>
+</body>
+</html>
