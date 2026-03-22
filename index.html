@@ -3,86 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GENERATOR-QR</title>
-    <link rel="icon" href="./img/logoQr.png" type="image/x-icon">
+    <title>GENERATOR QR</title>
+    <link rel="icon" href="./logoQr.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<header>
-    <div class="titulo-header">
-      
-        <img class="logo" src="logoQr.png" alt="logo">
-       
-      
-        <h1 id="titulo">Generador de códigos QR</h1>
-   
-    </div>
-    
-        <div id="enlaces">
-    
-            <li><a href="#como-utilizar">¿Cómo funciona?</a></li>
-
-        </div>
-       
-   
-</header>
 <body>
-    <div class="container">
-        
-        <label for="texto">Texto / URL:</label>
-        <textarea type="text" name="texto" id="texto" class="texto" cols="100" rows="10" placeholder="Ingresa frase o texto..."></textarea>
-        <br>
-        <button id="botonReiniciar">Borrar texto</button>
-        <div class="mensaje">
-            <div id="mensaje" onclick="texto_mensaje()">
-        </div>
-        <br>
-        <button onclick="generarQR();">Generar código QR</button>
-        <div class="qr-container">
-            <div id="codigoQR"></div>
-        </div>
-    </div>
-    <div class="mensaje">
-        <div id="mensaje" onclick="texto_mensaje()">
-    </div>
 
-    <div class="informacion">
-        <h2 id="como-utilizar">¿Cómo puedo utilizar esta app?</h2>
-        <h3>Hay muchas formas de utilizar los GENERATOR QR:</h3>
-        <p>
-            Generar un Qr con un enlace para compartir. <br>
-            Conocer el contenido de un estante o archivero.
-        <br>Funcionalidad de un artefacto o electrodoméntico.
-        <br>Indicar la ubicación de un objeto o lugar.
-        <br>Mostrar el valor o precio de un producto.
-        <br>Dar a conocer todo tipo de información para que este<br>
-        disponible para quien la necesite; clientes, visitas, huespedes.<br> 
-        Ya sea; en una casa, un hotel, una oficina o un local. 
-        </p>
-        <h3>
-            A quien esta dirigida esta herrmienta:
-        </h3>
-       
-            <ul>
-                Locales de todo tipo/ 
-                Oficinas/ 
-                Empresas/ 
-                Hoteles/
-                Casas
-            </ul>
-                
+    <!-- Background grid -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
 
-        <h4>
-            Existen infinidad de alternativas en las que puedes usar<br>
-            este tipo de códigos, solo necesitas generarlos con el texto<br>
-            que quieras comunicar, imprimirlo y colocarlo donde las personas<br>
-            puedan escanearlo con su celular y acceder a dicha información.
-        </h4>
-    </div>
+    <header>
+        <nav class="nav">
+            <div class="nav-brand">
+                <div class="logo-wrap">
+                    <img class="logo" src="logoQr.png" alt="logo">
+                </div>
+                <span class="brand-name">GENERATOR<span class="brand-accent">QR</span></span>
+            </div>
+            <a href="#como-utilizar" class="nav-link">¿Cómo funciona?</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-tag">v2.0 · Tweegio 2024</div>
+            <h1 class="hero-title">
+                Genera códigos<br>
+                <span class="hero-title-accent">QR al instante</span>
+            </h1>
+            <p class="hero-sub">Convierte cualquier texto o URL en un código QR listo para usar.</p>
+        </section>
+
+        <!-- Generator Card -->
+        <section class="card">
+            <div class="card-inner">
+                <div class="input-side">
+                    <label for="texto" class="field-label">
+                        <span class="label-dot"></span>
+                        Texto / URL
+                    </label>
+                    <textarea
+                        id="texto"
+                        class="textarea"
+                        placeholder="Ingresá una frase, enlace o cualquier texto…"
+                    ></textarea>
+
+                    <div class="btn-row">
+                        <button id="botonReiniciar" class="btn btn-ghost">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+                            Borrar
+                        </button>
+                        <button onclick="generarQR();" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                            Generar QR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="output-side">
+                    <div class="qr-frame" id="qr-frame">
+                        <div class="qr-placeholder" id="qr-placeholder">
+                            <div class="placeholder-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                            </div>
+                            <p>Tu QR aparecerá aquí</p>
+                        </div>
+                        <div id="codigoQR" class="qr-output"></div>
+                    </div>
+                    <div class="qr-caption" id="qr-caption"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info" id="como-utilizar">
+            <div class="info-header">
+                <span class="section-tag">Guía de uso</span>
+                <h2 class="info-title">¿Cómo usar Generator QR?</h2>
+            </div>
+
+            <div class="uses-grid">
+                <div class="use-card">
+                    <div class="use-icon">🔗</div>
+                    <h4>Compartir enlaces</h4>
+                    <p>Generá un QR con cualquier URL para compartirlo fácilmente.</p>
+                </div>
+                <div class="use-card">
+                    <div class="use-icon">📦</div>
+                    <h4>Inventario</h4>
+                    <p>Identificá el contenido de cajas, estantes o archiveros.</p>
+                </div>
+                <div class="use-card">
+                    <div class="use-icon">📍</div>
+                    <h4>Ubicaciones</h4>
+                    <p>Señalá la ubicación de objetos o lugares de interés.</p>
+                </div>
+                <div class="use-card">
+                    <div class="use-icon">🏷️</div>
+                    <h4>Precios / Productos</h4>
+                    <p>Mostrá el precio o descripción de cualquier producto.</p>
+                </div>
+                <div class="use-card">
+                    <div class="use-icon">🏨</div>
+                    <h4>Hospitalidad</h4>
+                    <p>Hoteles, casas y oficinas que quieran ofrecer información al instante.</p>
+                </div>
+                <div class="use-card">
+                    <div class="use-icon">⚡</div>
+                    <h4>Instrucciones</h4>
+                    <p>Explicá la funcionalidad de cualquier artefacto o electrodoméstico.</p>
+                </div>
+            </div>
+
+            <div class="audience">
+                <h3>¿A quién está dirigida?</h3>
+                <div class="tags-row">
+                    <span class="tag">Locales comerciales</span>
+                    <span class="tag">Oficinas</span>
+                    <span class="tag">Empresas</span>
+                    <span class="tag">Hoteles</span>
+                    <span class="tag">Hogares</span>
+                </div>
+            </div>
+
+            <p class="info-cta">
+                Generá el QR con el texto que necesitás comunicar, imprimilo y colocalo donde las personas puedan escanearlo con su celular.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span class="footer-brand">GENERATOR<span>QR</span></span>
+        <span class="footer-copy">&copy; Tweegio 2024</span>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
     <script src="script.js"></script>
-    <footer> 
-       	&copy Tweegio 2024
-    </footer>
 </body>
 </html>
+
+    
